@@ -43,14 +43,9 @@ function ProductCard({ laptop }) {
 
           {/* GIÁ */}
           <div className="product-price">
-
-            <span>Giá bán</span>
-
-            <strong>
-              {laptop.price.toLocaleString("vi-VN")} đ
-            </strong>
-
-          </div>
+    <span>Giá bán</span>
+    <strong>Liên hệ để nhận giá tốt</strong>
+</div>
 
 
           {/* XEM CHI TIẾT */}
