@@ -1,0 +1,368 @@
+/* =========================================================
+   ANIMATIONS.CSS
+   Animation dùng chung cho website
+========================================================= */
+
+
+/* =========================================================
+   FADE UP
+========================================================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   FADE IN
+========================================================= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   FLOAT
+   Dùng cho laptop Hero
+========================================================= */
+
+@keyframes floatLaptop {
+
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -12px;
+    }
+}
+
+
+/* =========================================================
+   SOFT FLOAT
+========================================================= */
+
+@keyframes softFloat {
+
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -6px;
+    }
+}
+
+
+/* =========================================================
+   BUTTON ARROW
+========================================================= */
+
+@keyframes arrowMove {
+
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 4px 0;
+    }
+}
+
+
+/* =========================================================
+   HERO LAPTOP ANIMATION
+========================================================= */
+
+.laptop-1 {
+    animation:
+        floatLaptop 5s ease-in-out infinite;
+}
+
+.laptop-2 {
+    animation:
+        floatLaptop 4s ease-in-out infinite;
+
+    animation-delay: -1s;
+}
+
+.laptop-3 {
+    animation:
+        floatLaptop 6s ease-in-out infinite;
+
+    animation-delay: -2s;
+}
+
+
+/* =========================================================
+   HERO GLOW
+========================================================= */
+
+.hero-glow-main {
+    animation:
+        softFloat 7s ease-in-out infinite;
+}
+
+.hero-glow-small {
+    animation:
+        softFloat 5s ease-in-out infinite;
+
+    animation-delay: -2s;
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
+.product-card {
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 20px 45px rgba(37, 99, 235, 0.14);
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE
+========================================================= */
+
+.product-image {
+    transition:
+        transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   PRODUCT CARD LOAD ANIMATION
+========================================================= */
+
+.product-card {
+    opacity: 0;
+
+    animation:
+        fadeUp 0.7s ease forwards;
+}
+
+
+/* =========================================================
+   STAGGER CARD
+========================================================= */
+
+.product-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.product-card:nth-child(2) {
+    animation-delay: 0.12s;
+}
+
+.product-card:nth-child(3) {
+    animation-delay: 0.19s;
+}
+
+.product-card:nth-child(4) {
+    animation-delay: 0.26s;
+}
+
+.product-card:nth-child(5) {
+    animation-delay: 0.33s;
+}
+
+.product-card:nth-child(6) {
+    animation-delay: 0.40s;
+}
+
+.product-card:nth-child(7) {
+    animation-delay: 0.47s;
+}
+
+.product-card:nth-child(8) {
+    animation-delay: 0.54s;
+}
+
+
+/* =========================================================
+   DETAIL BUTTON
+========================================================= */
+
+.detail-button {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.detail-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(18, 100, 245, 0.18);
+}
+
+
+/* =========================================================
+   BUTTON ARROW
+========================================================= */
+
+.detail-button strong {
+    display: inline-block;
+
+    transition:
+        transform 0.25s ease;
+}
+
+.detail-button:hover strong {
+    animation:
+        arrowMove 0.7s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   HERO BUTTON
+========================================================= */
+
+.hero-button {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.hero-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(18, 100, 245, 0.25);
+}
+
+.hero-button strong {
+    display: inline-block;
+
+    transition:
+        transform 0.25s ease;
+}
+
+.hero-button:hover strong {
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.navbar:hover {
+    box-shadow:
+        0 14px 40px rgba(37, 99, 235, 0.14);
+}
+
+
+/* =========================================================
+   PRODUCT BADGE
+========================================================= */
+
+.product-badge {
+    animation:
+        softFloat 3s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal-overlay {
+    animation:
+        fadeIn 0.25s ease forwards;
+}
+
+.product-modal {
+    animation:
+        modalIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes modalIn {
+
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+   Người dùng bật giảm chuyển động trên thiết bị
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .product-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .product-card:hover .product-image {
+        transform: scale(1.02);
+    }
+
+    .navbar:hover {
+        box-shadow:
+            0 10px 35px rgba(37, 99, 235, 0.10);
+    }
+}

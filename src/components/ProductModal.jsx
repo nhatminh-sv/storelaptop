@@ -193,7 +193,7 @@ function ProductModal({ laptop, onClose }) {
             <span>Giá bán</span>
 
             <strong>
-              {laptop.price.toLocaleString("vi-VN")} đ
+              <strong>Liên hệ để nhận giá tốt</strong>
             </strong>
 
           </div>
