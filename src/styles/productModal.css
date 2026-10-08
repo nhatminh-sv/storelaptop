@@ -1,6 +1,12 @@
-/* =====================================================
+/* =========================================================
+   PRODUCT MODAL
+   Premium UI + Animation
+========================================================= */
+
+
+/* =========================================================
    MODAL OVERLAY
-===================================================== */
+========================================================= */
 
 .product-modal-overlay {
     position: fixed;
@@ -12,24 +18,26 @@
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     padding: 25px;
+
+    box-sizing: border-box;
 
     background:
         rgba(10, 25, 50, 0.55);
 
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 
     animation:
-        modalFadeIn 0.25s ease;
+        modalFadeIn 0.35s ease both;
 }
 
 
-/* =====================================================
+/* =========================================================
    MODAL
-===================================================== */
+========================================================= */
 
 .product-modal {
     position: relative;
@@ -56,14 +64,19 @@
         0 30px 80px
         rgba(10, 50, 100, 0.28);
 
+    transform-origin: center center;
+
     animation:
-        modalSlideUp 0.3s ease;
+        modalSlideUp
+        0.45s
+        cubic-bezier(0.2, 0.8, 0.2, 1)
+        both;
 }
 
 
-/* =====================================================
+/* =========================================================
    CLOSE BUTTON
-===================================================== */
+========================================================= */
 
 .modal-close {
     position: absolute;
@@ -81,14 +94,14 @@
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     border: none;
 
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.95);
+    background:
+        rgba(255, 255, 255, 0.95);
 
     color: #344054;
 
@@ -103,9 +116,11 @@
         rgba(0, 0, 0, 0.12);
 
     transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.3s
+        cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.25s ease;
 }
 
 
@@ -114,13 +129,19 @@
 
     color: #ffffff;
 
-    transform: rotate(90deg);
+    transform:
+        rotate(90deg)
+        scale(1.08);
+
+    box-shadow:
+        0 8px 20px
+        rgba(18, 100, 245, 0.25);
 }
 
 
-/* =====================================================
+/* =========================================================
    GALLERY
-===================================================== */
+========================================================= */
 
 .modal-gallery {
     min-width: 0;
@@ -133,10 +154,19 @@
             #f1f7ff,
             #e5efff
         );
+
+    animation:
+        modalGalleryIn
+        0.5s
+        0.05s
+        cubic-bezier(0.2, 0.8, 0.2, 1)
+        both;
 }
 
 
-/* MAIN IMAGE */
+/* =========================================================
+   MAIN IMAGE
+========================================================= */
 
 .modal-main-image {
     position: relative;
@@ -148,7 +178,6 @@
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     overflow: hidden;
@@ -175,20 +204,34 @@
     padding: 15px;
 
     transition:
-        opacity 0.2s ease;
+        transform 0.5s ease,
+        opacity 0.25s ease;
+
+    animation:
+        modalImageIn
+        0.45s
+        cubic-bezier(0.2, 0.8, 0.2, 1)
+        both;
 }
 
 
-/* =====================================================
+.modal-main-image:hover img {
+    transform:
+        scale(1.035);
+}
+
+
+/* =========================================================
    GALLERY ARROWS
-===================================================== */
+========================================================= */
 
 .gallery-arrow {
     position: absolute;
 
     top: 50%;
 
-    transform: translateY(-50%);
+    transform:
+        translateY(-50%);
 
     width: 42px;
 
@@ -197,7 +240,6 @@
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     border: none;
@@ -220,9 +262,11 @@
         rgba(0, 0, 0, 0.12);
 
     transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.3s
+        cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.25s ease;
 }
 
 
@@ -230,6 +274,14 @@
     background: #1264f5;
 
     color: #ffffff;
+
+    transform:
+        translateY(-50%)
+        scale(1.1);
+
+    box-shadow:
+        0 8px 20px
+        rgba(18, 100, 245, 0.25);
 }
 
 
@@ -243,9 +295,9 @@
 }
 
 
-/* =====================================================
+/* =========================================================
    THUMBNAILS
-===================================================== */
+========================================================= */
 
 .modal-thumbnails {
     display: flex;
@@ -257,6 +309,13 @@
     overflow-x: auto;
 
     padding-bottom: 4px;
+
+    scrollbar-width: none;
+}
+
+
+.modal-thumbnails::-webkit-scrollbar {
+    display: none;
 }
 
 
@@ -280,8 +339,10 @@
     cursor: pointer;
 
     transition:
-        border-color 0.2s ease,
-        transform 0.2s ease;
+        border-color 0.25s ease,
+        transform 0.3s
+        cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.25s ease;
 }
 
 
@@ -293,25 +354,44 @@
     object-fit: cover;
 
     border-radius: 5px;
+
+    transition:
+        transform 0.35s ease;
 }
 
 
 .thumbnail:hover {
-    transform: translateY(-2px);
+    transform:
+        translateY(-4px)
+        scale(1.02);
 
     border-color:
         rgba(18, 100, 245, 0.45);
+
+    box-shadow:
+        0 8px 20px
+        rgba(18, 100, 245, 0.12);
+}
+
+
+.thumbnail:hover img {
+    transform:
+        scale(1.08);
 }
 
 
 .thumbnail.active {
     border-color: #1264f5;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(18, 100, 245, 0.08);
 }
 
 
-/* =====================================================
+/* =========================================================
    INFORMATION
-===================================================== */
+========================================================= */
 
 .modal-information {
     display: flex;
@@ -321,8 +401,19 @@
     justify-content: center;
 
     padding: 55px 45px 45px;
+
+    animation:
+        modalInformationIn
+        0.55s
+        0.12s
+        cubic-bezier(0.2, 0.8, 0.2, 1)
+        both;
 }
 
+
+/* =========================================================
+   BRAND
+========================================================= */
 
 .modal-brand {
     margin-bottom: 10px;
@@ -336,8 +427,18 @@
     text-transform: uppercase;
 
     letter-spacing: 0.5px;
+
+    animation:
+        modalTextIn
+        0.4s
+        0.18s
+        ease both;
 }
 
+
+/* =========================================================
+   TITLE
+========================================================= */
 
 .modal-information h2 {
     margin: 0;
@@ -357,12 +458,18 @@
     font-weight: 800;
 
     letter-spacing: -1px;
+
+    animation:
+        modalTextIn
+        0.4s
+        0.22s
+        ease both;
 }
 
 
-/* =====================================================
+/* =========================================================
    DESCRIPTION
-===================================================== */
+========================================================= */
 
 .modal-description {
     margin: 17px 0 0;
@@ -372,12 +479,18 @@
     font-size: 14px;
 
     line-height: 1.7;
+
+    animation:
+        modalTextIn
+        0.4s
+        0.26s
+        ease both;
 }
 
 
-/* =====================================================
+/* =========================================================
    SPECIFICATIONS
-===================================================== */
+========================================================= */
 
 .modal-specifications {
     display: grid;
@@ -398,8 +511,60 @@
 
     background: #f5f8fc;
 
-    border: 1px solid
-        #edf2f7;
+    border: 1px solid #edf2f7;
+
+    opacity: 0;
+
+    animation:
+        specificationIn
+        0.4s
+        ease forwards;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.modal-specifications div:nth-child(1) {
+    animation-delay: 0.30s;
+}
+
+
+.modal-specifications div:nth-child(2) {
+    animation-delay: 0.36s;
+}
+
+
+.modal-specifications div:nth-child(3) {
+    animation-delay: 0.42s;
+}
+
+
+.modal-specifications div:nth-child(4) {
+    animation-delay: 0.48s;
+}
+
+
+.modal-specifications div:nth-child(5) {
+    animation-delay: 0.54s;
+}
+
+
+.modal-specifications div:hover {
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(18, 100, 245, 0.20);
+
+    background: #f5f8ff;
+
+    box-shadow:
+        0 8px 20px
+        rgba(18, 100, 245, 0.08);
 }
 
 
@@ -425,9 +590,9 @@
 }
 
 
-/* =====================================================
+/* =========================================================
    PRICE
-===================================================== */
+========================================================= */
 
 .modal-price {
     display: flex;
@@ -437,6 +602,12 @@
     gap: 5px;
 
     margin-top: 25px;
+
+    animation:
+        modalPriceIn
+        0.4s
+        0.52s
+        ease both;
 }
 
 
@@ -450,17 +621,17 @@
 .modal-price strong {
     color: #1264f5;
 
-    font-size: 29px;
+    font-size: 19px;
 
-    font-weight: 800;
+    font-weight: 700;
 
-    letter-spacing: -0.5px;
+    letter-spacing: -0.2px;
 }
 
 
-/* =====================================================
+/* =========================================================
    CONTACT BUTTON
-===================================================== */
+========================================================= */
 
 .modal-contact {
     width: 100%;
@@ -470,7 +641,6 @@
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     gap: 10px;
@@ -500,29 +670,53 @@
         0 9px 22px
         rgba(18, 100, 245, 0.22);
 
+    animation:
+        modalButtonIn
+        0.4s
+        0.58s
+        ease both;
+
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+        transform 0.3s
+        cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.3s ease;
 }
 
 
 .modal-contact span {
+    font-size: 13px;
+}
+
+
+.modal-contact strong {
+    display: inline-block;
+
     font-size: 18px;
+
+    transition:
+        transform 0.25s ease;
 }
 
 
 .modal-contact:hover {
-    transform: translateY(-2px);
+    transform:
+        translateY(-3px);
 
     box-shadow:
-        0 13px 28px
-        rgba(18, 100, 245, 0.32);
+        0 14px 30px
+        rgba(18, 100, 245, 0.30);
 }
 
 
-/* =====================================================
-   ANIMATION
-===================================================== */
+.modal-contact:hover strong {
+    transform:
+        translateX(5px);
+}
+
+
+/* =========================================================
+   KEYFRAMES
+========================================================= */
 
 @keyframes modalFadeIn {
 
@@ -542,7 +736,109 @@
         opacity: 0;
 
         transform:
-            translateY(25px)
+            translateY(35px)
+            scale(0.94);
+    }
+
+    60% {
+        opacity: 1;
+
+        transform:
+            translateY(-3px)
+            scale(1.005);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes modalGalleryIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+@keyframes modalImageIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.94)
+            translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+
+@keyframes modalInformationIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+@keyframes modalTextIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes specificationIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px)
             scale(0.97);
     }
 
@@ -556,9 +852,45 @@
 }
 
 
-/* =====================================================
+@keyframes modalPriceIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes modalButtonIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
    TABLET
-===================================================== */
+========================================================= */
 
 @media (max-width: 900px) {
 
@@ -594,9 +926,9 @@
 }
 
 
-/* =====================================================
+/* =========================================================
    MOBILE
-===================================================== */
+========================================================= */
 
 @media (max-width: 600px) {
 
@@ -607,11 +939,15 @@
 
     .product-modal {
         border-radius: 17px;
+
+        animation-duration: 0.35s;
     }
 
 
     .modal-gallery {
         padding: 15px;
+
+        animation-duration: 0.4s;
     }
 
 
@@ -622,6 +958,12 @@
 
     .modal-information {
         padding: 20px;
+
+        animation:
+            modalInformationMobile
+            0.45s
+            0.08s
+            ease both;
     }
 
 
@@ -636,6 +978,59 @@
 
 
     .modal-price strong {
-        font-size: 25px;
+        font-size: 17px;
+    }
+
+
+    .modal-contact {
+        animation-duration: 0.35s;
+    }
+
+
+    @keyframes modalInformationMobile {
+
+        from {
+            opacity: 0;
+
+            transform:
+                translateY(15px);
+        }
+
+        to {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+    }
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .product-modal-overlay,
+    .product-modal,
+    .modal-gallery,
+    .modal-main-image img,
+    .modal-information,
+    .modal-brand,
+    .modal-information h2,
+    .modal-description,
+    .modal-specifications div,
+    .modal-price,
+    .modal-contact {
+        animation: none !important;
+    }
+
+    .modal-close,
+    .gallery-arrow,
+    .thumbnail,
+    .modal-contact,
+    .modal-main-image img {
+        transition: none !important;
     }
 }

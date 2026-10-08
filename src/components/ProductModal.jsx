@@ -9,8 +9,10 @@ function ProductModal({ laptop, onClose }) {
       ? laptop.images
       : [laptop.image];
 
+  /* =====================================================
+     KHÓA SCROLL KHI MODAL MỞ
+  ===================================================== */
 
-  // Khóa scroll trang khi modal mở
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -19,8 +21,10 @@ function ProductModal({ laptop, onClose }) {
     };
   }, []);
 
+  /* =====================================================
+     ĐÓNG BẰNG ESC
+  ===================================================== */
 
-  // Đóng bằng phím ESC
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
@@ -35,61 +39,82 @@ function ProductModal({ laptop, onClose }) {
     };
   }, [onClose]);
 
+  /* =====================================================
+     ẢNH TRƯỚC
+  ===================================================== */
 
   const previousImage = () => {
     setSelectedImage((current) =>
-      current === 0
-        ? images.length - 1
-        : current - 1
+      current === 0 ? images.length - 1 : current - 1
     );
   };
 
+  /* =====================================================
+     ẢNH TIẾP
+  ===================================================== */
 
   const nextImage = () => {
     setSelectedImage((current) =>
-      current === images.length - 1
-        ? 0
-        : current + 1
+      current === images.length - 1 ? 0 : current + 1
     );
   };
 
+  /* =====================================================
+     CONTACT
+  ===================================================== */
+
+  const handleContact = () => {
+    onClose();
+
+    window.location.href = "/contact";
+  };
 
   return (
     <div
       className="product-modal-overlay"
       onClick={onClose}
     >
-
       <div
         className="product-modal"
         onClick={(event) => event.stopPropagation()}
       >
 
-        {/* CLOSE */}
+        {/* =================================================
+            CLOSE
+        ================================================= */}
+
         <button
           className="modal-close"
           onClick={onClose}
+          aria-label="Đóng"
         >
           ×
         </button>
 
 
-        {/* LEFT - IMAGE */}
+        {/* =================================================
+            LEFT - GALLERY
+        ================================================= */}
+
         <div className="modal-gallery">
 
           <div className="modal-main-image">
 
             <img
+              key={images[selectedImage]}
               src={images[selectedImage]}
               alt={laptop.name}
+              className="modal-main-photo"
             />
 
 
             {/* PREVIOUS */}
+
             {images.length > 1 && (
               <button
                 className="gallery-arrow gallery-prev"
                 onClick={previousImage}
+                aria-label="Ảnh trước"
               >
                 ‹
               </button>
@@ -97,10 +122,12 @@ function ProductModal({ laptop, onClose }) {
 
 
             {/* NEXT */}
+
             {images.length > 1 && (
               <button
                 className="gallery-arrow gallery-next"
                 onClick={nextImage}
+                aria-label="Ảnh tiếp theo"
               >
                 ›
               </button>
@@ -109,18 +136,22 @@ function ProductModal({ laptop, onClose }) {
           </div>
 
 
-          {/* THUMBNAILS */}
+          {/* =================================================
+              THUMBNAILS
+          ================================================= */}
+
           <div className="modal-thumbnails">
 
             {images.map((image, index) => (
               <button
-                key={image}
+                key={`${image}-${index}`}
                 className={
                   selectedImage === index
                     ? "thumbnail active"
                     : "thumbnail"
                 }
                 onClick={() => setSelectedImage(index)}
+                aria-label={`Xem ảnh ${index + 1}`}
               >
                 <img
                   src={image}
@@ -134,18 +165,27 @@ function ProductModal({ laptop, onClose }) {
         </div>
 
 
-        {/* RIGHT - INFORMATION */}
+        {/* =================================================
+            RIGHT - INFORMATION
+        ================================================= */}
+
         <div className="modal-information">
+
+          {/* BRAND */}
 
           <div className="modal-brand">
             {laptop.brand}
           </div>
 
 
+          {/* NAME */}
+
           <h2>
             {laptop.name}
           </h2>
 
+
+          {/* DESCRIPTION */}
 
           <p className="modal-description">
             Laptop chính hãng, ngoại hình đẹp,
@@ -153,6 +193,10 @@ function ProductModal({ laptop, onClose }) {
             học tập, văn phòng và công việc hàng ngày.
           </p>
 
+
+          {/* =================================================
+              SPECIFICATIONS
+          ================================================= */}
 
           <div className="modal-specifications">
 
@@ -188,26 +232,43 @@ function ProductModal({ laptop, onClose }) {
           </div>
 
 
+          {/* =================================================
+              PRICE
+          ================================================= */}
+
           <div className="modal-price">
 
-            <span>Giá bán</span>
+            <span>
+              Giá bán
+            </span>
 
             <strong>
-              <strong>Liên hệ để nhận giá tốt</strong>
+              Liên hệ để nhận giá tốt
             </strong>
 
           </div>
 
 
-          <button className="modal-contact">
-            Liên hệ ngay
-            <span>→</span>
+          {/* =================================================
+              CONTACT BUTTON
+          ================================================= */}
+
+          <button
+            className="modal-contact"
+            onClick={handleContact}
+          >
+            <span>
+              Liên hệ ngay
+            </span>
+
+            <strong>
+              →
+            </strong>
           </button>
 
         </div>
 
       </div>
-
     </div>
   );
 }

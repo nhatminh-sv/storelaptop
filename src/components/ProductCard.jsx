@@ -1,76 +1,139 @@
 import { useState } from "react";
+
 import "../styles/product.css";
+
 import ProductModal from "./ProductModal";
+import ScrollReveal from "./ScrollReveal";
+
 
 function ProductCard({ laptop }) {
+
   const [showModal, setShowModal] = useState(false);
+
 
   return (
     <>
-      <article className="product-card">
+      {/* =========================
+          PRODUCT CARD
+      ========================= */}
 
-        {/* ẢNH */}
-        <div className="product-image-box">
+      <ScrollReveal
+        delay={(laptop.id % 4) * 100}
+      >
 
-          <span className="product-badge">
-            NỔI BẬT
-          </span>
+        <article className="product-card">
 
-          <img
-            src={laptop.image}
-            alt={laptop.name}
-            className="product-image"
-          />
+          {/* =========================
+              ẢNH SẢN PHẨM
+          ========================= */}
 
-        </div>
+          <div className="product-image-box">
 
+            {laptop.featured && (
+              <span className="product-badge">
+                NỔI BẬT
+              </span>
+            )}
 
-        {/* THÔNG TIN */}
-        <div className="product-info">
+            <img
+              src={laptop.image}
+              alt={laptop.name}
+              className="product-image"
+            />
 
-          <div className="product-brand">
-            {laptop.brand}
           </div>
 
-          <h2>
-            {laptop.name}
-          </h2>
 
-          <p className="product-spec">
-            {laptop.cpu} • {laptop.ram} • {laptop.ssd}
-          </p>
+          {/* =========================
+              THÔNG TIN SẢN PHẨM
+          ========================= */}
 
+          <div className="product-info">
 
-          {/* GIÁ */}
-          <div className="product-price">
-    <span>Giá bán</span>
-    <strong>Liên hệ để nhận giá tốt</strong>
-</div>
+            {/* BRAND */}
+
+            <div className="product-brand">
+              {laptop.brand}
+            </div>
 
 
-          {/* XEM CHI TIẾT */}
-          <button
-            className="detail-button"
-            onClick={() => setShowModal(true)}
-          >
-            <span>Xem chi tiết</span>
-            <strong>→</strong>
-          </button>
+            {/* TÊN */}
 
-        </div>
-
-      </article>
+            <h2>
+              {laptop.name}
+            </h2>
 
 
-      {/* MODAL */}
+            {/* CẤU HÌNH */}
+
+            <p className="product-spec">
+              {laptop.cpu}
+              {" • "}
+              {laptop.ram}
+              {" • "}
+              {laptop.ssd}
+            </p>
+
+
+            {/* =========================
+                GIÁ
+            ========================= */}
+
+            <div className="product-price">
+
+              <span>
+                Giá bán
+              </span>
+
+              <strong>
+                Liên hệ để nhận giá tốt
+              </strong>
+
+            </div>
+
+
+            {/* =========================
+                XEM CHI TIẾT
+            ========================= */}
+
+            <button
+              className="detail-button"
+              onClick={() => setShowModal(true)}
+            >
+
+              <span>
+                Xem chi tiết
+              </span>
+
+              <strong>
+                →
+              </strong>
+
+            </button>
+
+          </div>
+
+        </article>
+
+      </ScrollReveal>
+
+
+      {/* =========================
+          PRODUCT MODAL
+      ========================= */}
+
       {showModal && (
+
         <ProductModal
           laptop={laptop}
           onClose={() => setShowModal(false)}
         />
+
       )}
+
     </>
   );
 }
+
 
 export default ProductCard;
